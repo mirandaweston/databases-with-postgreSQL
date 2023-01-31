@@ -1,4 +1,4 @@
-## Databases
+# Databases
 
 A series of challenges designed to meet the following objectives:
 
