@@ -13,10 +13,10 @@ class AlbumRepository
     
     result_set.each do |record|
       album = Album.new
-      album.id = record['id']
+      album.id = record['id'].to_i
       album.title = record['title']
       album.release_year = record['release_year']
-      album.artist_id = record['artist_id']
+      album.artist_id = record['artist_id'].to_i
 
       albums << album
     end
@@ -38,5 +38,17 @@ class AlbumRepository
     album.artist_id = record['artist_id']
 
     return album
+  end
+
+  # insert a new album
+  # album is a new Album object
+  def create(album)
+    sql = 'INSERT INTO albums (title, release_year, artist_id) VALUES ($1, $2, $3);'
+    sql_params = [album.title, album.release_year, album.artist_id]
+
+    DatabaseConnection.exec_params(sql,sql_params)
+
+    return nil
+    # returns nothing
   end
 end
