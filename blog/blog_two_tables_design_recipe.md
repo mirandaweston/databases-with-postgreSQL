@@ -98,7 +98,7 @@ The foreign key is on comments (comment_id)
 
 ```sql
 
--- file: comments_table.sql
+-- file: blog_table.sql
 
 
 -- Create the table without the foreign key first.
