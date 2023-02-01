@@ -22,8 +22,8 @@ TRUNCATE TABLE albums RESTART IDENTITY;
 
 -- Below this line there should only be `INSERT` statements.
 
-INSERT INTO albums (title, release_year, artist_id) VALUES ('Renaissance', '2022', '1');
-INSERT INTO albums (title, release_year, artist_id) VALUES ('Future Nostalgia', '2021', '2');
+INSERT INTO albums (title, release_year, artist_id) VALUES ('Renaissance', 2022, 1);
+INSERT INTO albums (title, release_year, artist_id) VALUES ('Future Nostalgia', 2021, 2);
 
 ```
 
@@ -122,9 +122,9 @@ albums = repo.all
 
 albums.length # =>  2
 
-albums.first.id # =>  "1"
+albums.first.id # =>  1
 albums.first.title # =>  "Renaissance"
-albums.first.release_year # => "2022"
+albums.first.release_year # => 2022
 
 ```
 
@@ -135,8 +135,8 @@ repo = AlbumRepository.new
 album = repo.find(1)
 
 album.title # => 'Renaissance'
-album.release_year # => '2022'
-album.artist_id # => '1'
+album.release_year # => 2022
+album.artist_id # => 1
 
 ```
 ```ruby
@@ -147,8 +147,29 @@ repo = AlbumRepository.new
 album = repo.find(2)
 
 album.title # => 'Future Nostalgia'
-album.release_year # => '2021'
-album.artist_id # => '2'
+album.release_year # => 2021
+album.artist_id # => 2
+
+```
+```ruby
+
+# 4
+# insert a new album
+
+repo = AlbumRepository.new
+
+album = Album.new
+album.title = 'Brand New Eyes'
+album.release_year = 2009
+album.artist_id = 1
+
+repo.create(album)
+
+all_albums = repo.all
+
+# all_albums should contain the new album
+
+```
 
 Encode this example as a test.
 
