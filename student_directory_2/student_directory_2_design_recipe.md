@@ -85,7 +85,7 @@ You'll then be able to say that:
 -> Therefore,
 Student -> many to one -> Cohort
 
-The foreign key is on students (cohort_id)
+The foreign key is on the students table (cohort_id)
 
 ```
 
@@ -93,7 +93,7 @@ The foreign key is on students (cohort_id)
 
 ```sql
 
--- file: students_table.sql
+-- file: cohorts_table.sql
 
 
 -- Create the table without the foreign key first.
@@ -102,6 +102,8 @@ CREATE TABLE cohorts (
   name text,
   starting_date date,
 );
+
+-- file: students_table.sql
 
 -- Then the table with the foreign key first.
 CREATE TABLE students (
@@ -119,6 +121,7 @@ CREATE TABLE students (
 
 ```bash
 psql -h 127.0.0.1 student_directory_2 < students_table.sql
+psql -h 127.0.0.1 student_directory_2 < cohorts_table.sql
 ```
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
